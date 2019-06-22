@@ -1,0 +1,729 @@
+body{
+    width: 100%;
+    margin: 0px;
+	padding: 0px;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+/*  Navigation Bar  */
+
+.top-nav{
+    width: 100%;
+    background-color: #000000; 
+    overflow: hidden;
+}
+
+.logo{
+    padding: 20px;
+    color: #999;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+.top-nav a{
+    float: left;
+    text-decoration: none;
+    color: #9D9D9D;
+    text-align: center;
+    padding: 20px;
+}
+
+.top-nav a:hover{
+    color: #e29839;
+}
+
+.top-nav .icon{
+	display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+float: left;
+overflow: hidden;
+}
+  
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+font-size: inherit;
+text-align: center;
+color: #9D9D9D;
+padding: 20px;
+background-color: inherit;
+font-family: inherit;
+margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #000000;
+min-width: 100px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+float: none;
+color: #9D9D9D;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover, .dropdown:hover .dropbtn {
+	color: #e29839;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+background-color: #ddd;
+color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+
+@media screen and (max-width:800px){
+	.right-link a{
+		float: left;
+	}
+	.top-nav a:not(:first-child) {display: none;}
+	.top-nav a.icon {
+		float: right;
+		display: block;
+	}
+	
+	.top-nav .responsive {position: relative;}
+	.top-nav .responsive a.icon {						/*	Error in the Menu Drawer	Fix it whenever u are free !*/
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.top-nav .responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+
+	.top-nav.responsive .dropdown {float: none;}
+	.top-nav.responsive .dropdown-content {position: relative;}
+	.top-nav.responsive .dropdown .dropbtn {
+	display: block;
+	width: 100%;
+	text-align: left;
+  }
+}
+
+/*  Image Positioning   */
+
+.img{
+	position: relative;
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.img1{
+    background-image: url("Assets/img2.jpg");
+}
+
+.img2{
+    background-image: url("Assets/favourite.jpg");
+}
+
+.imgtext{
+    position: absolute;
+	text-align: center;
+	top: 30%;
+	width: 100%;
+	color: #000000;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+/*  Text Formatting   */
+h1{
+    letter-spacing: 2px;
+	font-size: 40px;
+}
+.section{
+	text-align: center;
+	padding: 40px 50px;
+}
+
+.section-light{
+    background-color: #f4f4f4;
+	color: #252525;
+}
+
+.section-dark{
+    background-color: #282e34; 
+	color: #ddd;
+}
+
+/*  Card Holders    */
+.card-holder{
+    margin: 3% 9%;
+    overflow: auto;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 20%;
+    float: left;
+    margin: 2%;
+    border-radius: 5px;
+}
+
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+/*  Footer Bottom   */
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  #e29839;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* Responsive for Footer */
+
+@media (max-width: 880px) {
+    .container{
+        font-size: 5px;
+    }
+    .card{
+        display: block;
+        float: none;
+        width: 90%;
+	}
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+}
+
+/*		Modal Style		*/
+
+/* The Modal (background) */
+.modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 4%; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4); 
+}
+  
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	border-radius: 20px;
+	width: 50%;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*	Form Style Modal	*/
+/* Full-width input fields */
+input[type=text], input[type=password] , input[type=email] {
+width: 100%;
+border-radius: 20px;
+padding: 15px;
+margin: 5px 0 22px 0;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+::placeholder{
+	color: #e29839;
+	opacity: 0.7;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+position: relative;
+/*left: 40%;*/
+border-radius: 20px;
+background-color: #e29839;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: auto;
+opacity: 0.9;
+}
+
+button:hover {
+opacity:1;
+}
+
+/* Add padding to container elements */
+.container {
+padding: 16px;
+}
+
+/*		Responsive Modal 	*/
+@media screen and (max-width:500px){
+	.modal-content{
+		width: 80%;
+	}
+}
+
+/*		Bot Style		*/
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+background-color: #555;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 23px;
+left: 80%;
+width: 280px;
+}
+@media (max-width: 880px) {
+	.open-button{
+		left:20%;
+	}
+}
+/* The popup chat - hidden by default */
+.chat-popup {
+display: none;
+position: fixed;
+bottom: 1%;
+left: 78%;
+z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+max-width: 300px;
+padding: 10px;
+color: #e29939a9;
+border: 1px #000000;
+border-radius: 20px;
+background-color: #000000;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+width: 50%;
+padding: 15px;
+border: none;
+background: #181818;
+resize: none;
+color: #e29839;
+min-height: 50px;
+}
+
+.form-container .bottom{
+	display: inline-flex;
+}
+.bottom input{
+	height: 80px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+background-color:#181818;
+color: #e29839;
+outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+position: relative;
+background-color: #e29839;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: auto;
+margin-bottom:10px;
+opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+opacity: 1;
+}
+
+
+
+/* Chat containers  for the Bot chat Window*/
+.chat-parent-container{
+	height: 200px;
+	overflow:auto;
+}
+.chat-container {
+border: 2px solid #dedede;
+background-color: #f1f1f1;
+color: black;
+border-radius: 5px;
+padding: 0px;
+margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+border-color: #ccc;
+background-color: #ddd;
+}
+
+/* Clear floats */
+.chat-container::after {
+content: "";
+clear: both;
+display: table;
+}
+
+/* Style images */
+.chat-container img {
+float: left;
+max-width: 60px;
+width: 100%;
+margin-right: 20px;
+border-radius: 50%;
+min-height: 60px;
+}
+
+/* Style the right image */
+.chat-container img.right {
+float: right;
+margin-left: 20px;
+margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+float: right;
+color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+float: left;
+color: #999;
+}
+
+/* Pagination links */
+.pagination{
+	overflow: auto;
+	margin: 3% 37%;
+	background-color: #ffffff;
+}
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+	background-color: #E29839;
+	color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+/* album top */
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+.stars-container {
+position: relative;
+display: inline-block;
+color: transparent;
+}
+
+.stars-container:before {
+position: absolute;
+top: 0;
+left: 0;
+content: '★★★★★';
+color: lightgray;
+}
+
+.stars-container:after {
+position: absolute;
+top: 0;
+left: 0;
+content: '★★★★★';
+color: gold;
+overflow: hidden;
+}
+
+.stars-0:after { width: 0%; }
+.stars-10:after { width: 10%; }
+.stars-20:after { width: 20%; }
+.stars-30:after { width: 30%; }
+.stars-40:after { width: 40%; }
+.stars-50:after { width: 50%; }
+.stars-60:after { width: 60%; }
+.stars-70:after { width: 70%; }
+.stars-80:after { width: 80%; }
+.stars-90:after { width: 90%; }
+.stars-100:after { width: 100; }
+
+/*		Snack Bar Style		*/
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color:rgb(55, 131, 54);
+	color: rgb(163, 91, 101);
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 7.5%;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from {top: 0; opacity: 0;} 
+	to {top: 7.5%; opacity: 1;}
+}
+
+@keyframes fadein {
+	from {top: 0; opacity: 0;}
+	to {top: 7.5%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+	from {top: 7.5%; opacity: 1;} 
+	to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+	from {top: 7.5%; opacity: 1;}
+	to {top: 0; opacity: 0;}
+}

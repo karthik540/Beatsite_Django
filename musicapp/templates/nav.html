@@ -1,0 +1,108 @@
+<nav class = "top-nav" id = "topNav">    
+    
+    <a  class="logo">BeatSite</a>
+   
+    <a href = "/"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href = "/browse"><i class="fa fa-dedent"></i> Browse</a>
+    <a href = "/favourite"><i class="fa fa-fw fa-music"></i> My Playlist</a>
+    <a href = "#bottom"><i class="fa fa-fw fa-user"></i> About Us</a>
+    {% if user.is_authenticated %}
+        <div class="dropdown" style="float:right;">
+            <div class="dropbtn"><i class="fa fa-fw fa-user editButton"></i>{{ user.get_username }}</div>
+            <div class="dropdown-content">
+            <a href="#"><i class="fa fa-fw fa-user"></i>Profile</a>
+            <a href="#" onclick="logout();"><i class="fa fa-fw fa-sign-out"></i>LogOut</a>
+            </div>
+        </div> 
+    {% else %}
+        <a href = "" style="float:right;" id = "loginButton"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a href = "" style="float:right;" id = "signUpButton"><i class="fa fa-fw fa-user"></i> SignUp</a>
+    {% endif %}
+    
+
+    
+
+    
+    <a href="#" class="icon" id = "menu-drawer" onclick="responsiveManage();">
+        <i class="fa fa-bars"></i>
+    </a>
+</nav>
+
+<!--    SignUp Modal        -->
+
+<div id="SignUpModal" class="modal">
+
+    <!-- Modal content -->
+    <form class="modal-content" id = "SignupForm">
+    <span class="signupclose close">&times;</span>
+    <div class="container">
+        <center>
+            <h1>Sign Up</h1>
+            <hr>
+            <table style="width: 80%;">
+                <tr>
+                    <td><label for="email"><b>Email</b></label></td>
+                    <td><input type="email" placeholder="Enter Email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="name"><b>Name</b></label></td>
+                    <td><input type="text" placeholder="Enter Name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="psw"><b>Password</b></label></td>
+                    <td><input type="password" placeholder="Enter Password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> By creating an account you agree to our <a href="#" style="color:#e29839">Terms & Privacy</a>.
+                        </label>
+                    </td>
+                    <td>
+                        <div class="clearfix">
+                        <button type="button" class="signupbtn" onclick="signup()">Sign Up</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>           
+        </center>
+        
+    </div>
+    </form>
+</div>
+
+<!--    Login Modal     -->
+<div id="LoginModal" class="modal">
+
+    <!-- Modal content -->
+    <form class="modal-content" id = "LoginForm">
+    <span class="loginclose close">&times;</span>
+    <div class="container">
+        <center>
+            <h1>Log In</h1>
+            <hr>
+            <table>
+                <tr>
+                    <td><label for="email"><b>Email</b></label></td>
+                    <td><input type="text" placeholder="Enter Email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td> <label for="psw"><b>Password</b></label></td>
+                    <td><input type="password" placeholder="Enter Password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><div class="g-recaptcha" data-sitekey="6Ldbdg0TAAAAAI7KAf72Q6uagbWzWecTeBWmrCpJ" style = "margin-top: 5%;"></div></td>
+                    <td>
+                        <div class="clearfix">
+                        <button type="button" class="signupbtn" style = "margin-top: 2%;" onclick="login()">Log In</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>      
+         </center>
+        
+    </div>
+    </form>
+</div>
+
+<div id="snackbar"></div>
