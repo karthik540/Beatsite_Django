@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'personalJS.js'%}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="Stylesheet" href = "{% static 'personalStyle.css' %}">
+    <title>BeatSite</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class = "card-holder">
+
+    {% for track in album_list  %}  
+            <a href = "/album/{{ track.album_id }}" style="text-decoration-color: black;">      
+            <div class="card" style = "min-height: 400px; max-height: 400px;"> <!--style = "max-height: 280px; width: 20%"-->
+                <img src="{{ track.image_url }}" alt="Avatar" style="width: 100%; height: 230px;"> <!-- height: 176px;-->
+                <div class="container"> <!-- style = "padding: 0px 0px;text-align: center;"-->
+                    <h4><b>{{ track.album_name }}</b></h3> 
+                    <p>{{ track.artist_name }}</p> 
+                </div>
+            </div>   
+            </a>     
+    {% endfor %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

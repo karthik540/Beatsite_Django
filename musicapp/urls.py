@@ -3,7 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.index , name = 'index'),
+    #   User Authentication
     path('account/login/' , views.login_user , name = 'login'),
     path('account/logout/' , views.logout_user , name = 'logout'),
     path('account/signup/' , views.signup_user , name = 'signup'),
+    #   Album List
+    path('browse/' , views.browse , name = 'browse'),
+    path('browse/<int:page_no>/' , views.browse , name = 'browse'),
 ]
