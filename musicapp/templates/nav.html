@@ -6,6 +6,7 @@
     <a href = "/browse"><i class="fa fa-dedent"></i> Browse</a>
     <a href = "/favourite"><i class="fa fa-fw fa-music"></i> My Playlist</a>
     <a href = "#bottom"><i class="fa fa-fw fa-user"></i> About Us</a>
+    
     {% if user.is_authenticated %}
         <div class="dropdown" style="float:right;">
             <div class="dropbtn"><i class="fa fa-fw fa-user editButton"></i>{{ user.get_username }}</div>
@@ -17,12 +18,8 @@
     {% else %}
         <a href = "" style="float:right;" id = "loginButton"><i class="fa fa-fw fa-user"></i> Login</a>
         <a href = "" style="float:right;" id = "signUpButton"><i class="fa fa-fw fa-user"></i> SignUp</a>
-    {% endif %}
-    
+    {% endif %}  
 
-    
-
-    
     <a href="#" class="icon" id = "menu-drawer" onclick="responsiveManage();">
         <i class="fa fa-bars"></i>
     </a>
@@ -45,8 +42,8 @@
                     <td><input type="email" placeholder="Enter Email" name="email" required></td>
                 </tr>
                 <tr>
-                    <td><label for="name"><b>Name</b></label></td>
-                    <td><input type="text" placeholder="Enter Name" name="name" required></td>
+                    <td><label for="username"><b>Username</b></label></td>
+                    <td><input type="text" placeholder="Enter Username" name="username" required></td>
                 </tr>
                 <tr>
                     <td><label for="psw"><b>Password</b></label></td>
@@ -84,7 +81,7 @@
             <table>
                 <tr>
                     <td><label for="email"><b>Email</b></label></td>
-                    <td><input type="text" placeholder="Enter Email" name="email" required></td>
+                    <td><input type="email" placeholder="Enter Email" name="email" required></td>
                 </tr>
                 <tr>
                     <td> <label for="psw"><b>Password</b></label></td>

@@ -142,17 +142,33 @@ function refreshPage()
     location.href = "/";
     location.reload();
 }
-
+function getCookie(c_name)
+{
+    if (document.cookie.length > 0)
+    {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1)
+        {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) c_end = document.cookie.length;
+            return unescape(document.cookie.substring(c_start,c_end));
+        }
+    }
+    return "";
+}
 /*      Login function       */
 function login()
 {
     $.ajax({
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "POST",
-        url: "/login",
+        url: "/account/login/",
         data: $("#LoginForm").serialize(),
         success: function (response) {
             //console.log(response);
             //CloseModal();
+            console.log(response);
             if(response['flag'] == 1)
             {
                 refreshPage();
@@ -162,6 +178,8 @@ function login()
         },
         error: function () {
             snackbar("Login Failed !" , "red");
+        },
+        complete: function() {
         }
     });
 }
@@ -169,8 +187,9 @@ function login()
 function logout()
 {
     $.ajax({
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "GET",
-        url: "/logout",
+        url: "account/logout/",
         success: function (response) {
             refreshPage();
         }
@@ -181,11 +200,18 @@ function logout()
 function signup()
 {
     $.ajax({
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "POST",
-        url: "/signup",
+        url: "/account/signup/",
         data: $("#SignupForm").serialize(),
         success: function (response) {
-            refreshPage();
+            console.log(response);
+            if(response['flag'] == 1)
+            {
+                refreshPage();
+            }
+            if(response['flag'] == 0)    
+                snackbar("Login Failed !" , "red"); 
         },
         error: function () {
             snackbar("Signup Failed !" , "red");
