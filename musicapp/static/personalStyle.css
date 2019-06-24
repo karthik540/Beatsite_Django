@@ -91,37 +91,44 @@ color: black;
 .dropdown:hover .dropdown-content {
 display: block;
 }
-
-
-@media screen and (max-width:800px){
+@media screen and (max-width: 800px) {
+	.top-nav a:not(:first-child), .dropdown .dropbtn {
+		display: none;
+	}
 	.right-link a{
 		float: left;
-	}
-	.top-nav a:not(:first-child) {display: none;}
+	}	
 	.top-nav a.icon {
-		float: right;
-		display: block;
+	float: right;
+	display: block;
 	}
-	
-	.top-nav .responsive {position: relative;}
-	.top-nav .responsive a.icon {						/*	Error in the Menu Drawer	Fix it whenever u are free !*/
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
-	.top-nav .responsive a {
-		float: none;
-		display: block;
-		text-align: left;
-	}
+}
 
+@media screen and (max-width:800px){
+	.top-nav.responsive {position: relative;}
+	.top-nav.responsive .icon {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	}
+	.top-nav.responsive > a {
+	  float: none;
+	  display: block;
+	  text-align: left;
+	}
+	.top-nav.responsive .dropdown{position: relative;}
+	.top-nav.responsive .dropdown .dropdown-content > a {
+	  float: right;
+	  display: block;
+	  text-align: left;
+	}
 	.top-nav.responsive .dropdown {float: none;}
 	.top-nav.responsive .dropdown-content {position: relative;}
 	.top-nav.responsive .dropdown .dropbtn {
-	display: block;
-	width: 100%;
-	text-align: left;
-  }
+		display: block;
+		width: 100%;
+		text-align: left;
+	}
 }
 
 /*  Image Positioning   */
