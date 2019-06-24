@@ -177,7 +177,7 @@ function login()
                 snackbar("Login Failed !" , "red");            
         },
         error: function () {
-            snackbar("Login Failed !" , "red");
+            snackbar("Incorrect Credentials !" , "red");
         },
         complete: function() {
         }
@@ -211,10 +211,10 @@ function signup()
                 refreshPage();
             }
             if(response['flag'] == 0)    
-                snackbar("Login Failed !" , "red"); 
+                snackbar("Signup Failed !" , "red"); 
         },
         error: function () {
-            snackbar("Signup Failed !" , "red");
+            snackbar("Server Error !" , "red");
         }
     });
 }

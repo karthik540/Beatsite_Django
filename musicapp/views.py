@@ -32,12 +32,11 @@ def signup_user(request):
 
         user = CustomUser()
         user.username = username
-        user.password = password
+        user.set_password(password)
         user.email = email
         user.save()
 
         user = CustomUser.objects.get(email = email)
-        print(user)
         if user is not None:
             login(request , user)
             return JsonResponse({'flag' : 1})
