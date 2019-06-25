@@ -222,15 +222,17 @@ function signup()
 /*      Youtube video Fetcher       */
 
 function getVideoID(songname){
-    //console.log(songname);
+    songname = songname.replace(' ' , '_')
+    console.log(songname);
 
     $.ajax({
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "POST",
-        url: "/videoId/" + songname,
+        url: "/videoId/" + songname + "/",
         success: function (response) {
-            //console.log(response);
+            console.log(response);
             $("#video_container").css("padding", "3% 25%");
-            $("#video_container").html("<iframe id='player' width='100%' height='400px' src='https://www.youtube.com/embed/" + response + "?autoplay=1&enablejsapi=1&html5=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen=''></iframe>");
+            $("#video_container").html("<iframe id='player' width='100%' height='400px' src='https://www.youtube.com/embed/" + response.video_id + "?autoplay=1&enablejsapi=1&html5=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen=''></iframe>");
             onYouTubePlayerAPIReady();
         }
     });

@@ -10,4 +10,7 @@ urlpatterns = [
     #   Album List
     path('browse/' , views.browse , name = 'browse'),
     path('browse/<int:page_no>/' , views.browse , name = 'browse'),
+    #   Album Page
+    path('album/<int:album_id>/' , views.album , name = 'album'),
+    path('videoId/<str:songname>/' , views.videoId , name = 'videoId'),
 ]
