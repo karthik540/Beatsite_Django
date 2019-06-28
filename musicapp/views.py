@@ -137,27 +137,40 @@ def videoId(request , songname):
     l = "https://www.googleapis.com/youtube/v3/search?part=id&q="+ str(songname) +"&type=video&key=AIzaSyBtN6nKC7Jaai3hIWlumCQgrtkBZcmWq4U"
     p = requests.get(l)
     j_objs = json.loads(p.text)
-    pprint.pprint(j_objs)
+    #pprint.pprint(j_objs)
     video_id = j_objs['items'][0]['id']['videoId']
     return JsonResponse({'video_id' : video_id})
 
 def favourite_add(request , songid):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return JsonResponse({'flag' : 0})
     
-    """
-    connection = pymysql.connect(host = 'localhost' , user = 'root' , password = '' , db = 'BeatSite' , autocommit = True)
 
-    cursor = connection.cursor()
-    sql_query = "SELECT songlist FROM userdetails WHERE Email = %s"
-    data = (session['email'])
-    result = cursor.execute(sql_query , data)
-    prev_str = cursor.fetchone()
-    """
+    user = CustomUser.objects.get(id = request.user.id)
+    prev_str = user.songlist
+    prev_songlist = prev_str
 
-    user = CustomUser.objects.get(user = request.user)
-    print(user)
+    #check for null..
+    #check for null...
+    if prev_songlist is None:
+        prev_songlist = "`"
+    #splitting the trackids...
+    track_list = prev_songlist.split('`')
+    track_list.remove('')
+    for track in track_list:
+        if track == str(songid):
+            return JsonResponse({'flag' : 1})
+    #check for null...
+    if prev_str is None:
+        songid = songid + "`"
+    else:
+        songid = prev_str + songid + "`"
+    
+    user.songlist = songid
+    user.save()
+
     return JsonResponse({'flag' : 1})
+    
     """
     #check for duplicates...
     prev_songlist = prev_str
