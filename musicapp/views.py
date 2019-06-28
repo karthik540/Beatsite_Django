@@ -64,11 +64,17 @@ def browse(request , page_no = 1):
         album_list.append(single_album_list)
     #pprint.pprint(album_list)
 
+    #   Setting the page no list
+    page_list = []
+
+    for i in range(1,6):
+        page_list.append(page_no + i)
 
     data = {
         'flag' : 1,
         'album_list' : album_list,
-        'page_no' : page_no
+        'page_no' : page_no,
+        'page_list' : page_list
     }
     return render(request , 'browse.html' , context= data)
 
@@ -134,4 +140,53 @@ def videoId(request , songname):
     pprint.pprint(j_objs)
     video_id = j_objs['items'][0]['id']['videoId']
     return JsonResponse({'video_id' : video_id})
+
+def favourite_add(request , songid):
+    if not request.user.is_authenticated():
+        return JsonResponse({'flag' : 0})
+    
+    """
+    connection = pymysql.connect(host = 'localhost' , user = 'root' , password = '' , db = 'BeatSite' , autocommit = True)
+
+    cursor = connection.cursor()
+    sql_query = "SELECT songlist FROM userdetails WHERE Email = %s"
+    data = (session['email'])
+    result = cursor.execute(sql_query , data)
+    prev_str = cursor.fetchone()
+    """
+
+    user = CustomUser.objects.get(user = request.user)
+    print(user)
+    return JsonResponse({'flag' : 1})
+    """
+    #check for duplicates...
+    prev_songlist = prev_str
+    prev_songlist = prev_songlist[0]
+
+    #check for null..
+    #check for null...
+    if prev_songlist is None:
+        prev_songlist = "`"
+    #splitting the trackids...
+    track_list = prev_songlist.split('`')
+    track_list.remove('')
+    for track in track_list:
+        if track == str(songid):
+            return jsonify({'flag' : 1})
+    #check for null...
+    if prev_str[0] is None:
+        songid = songid + "`"
+    else:
+        songid = prev_str[0] + songid + "`"
+
+    sql_query = "UPDATE userdetails SET songlist = %s WHERE Email = %s"
+    data = (songid , session['email'])
+    result = cursor.execute(sql_query , data)
+    
+
+    if result == 1:
+        return jsonify({'flag' : 1})
+    else:
+        return jsonify({'flag' : 0})
+    """
 

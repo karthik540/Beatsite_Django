@@ -13,4 +13,6 @@ urlpatterns = [
     #   Album Page
     path('album/<int:album_id>/' , views.album , name = 'album'),
     path('videoId/<str:songname>/' , views.videoId , name = 'videoId'),
+    #   Favourites Add
+    path('favourite_add/<str:songid>/' , views.favourite_add , name='favourite_add'),
 ]
