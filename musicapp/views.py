@@ -170,36 +170,40 @@ def favourite_add(request , songid):
     user.save()
 
     return JsonResponse({'flag' : 1})
-    
-    """
-    #check for duplicates...
-    prev_songlist = prev_str
-    prev_songlist = prev_songlist[0]
 
-    #check for null..
-    #check for null...
-    if prev_songlist is None:
-        prev_songlist = "`"
+def favourite(request):
+    if not request.user.is_authenticated:
+        return render(request , 'favourite.html' , context= {'flag' : 0})
+    
+    user = CustomUser.objects.get(id = request.user.id)
+    prev_str = user.songlist
+    prev_songlist = prev_str
     #splitting the trackids...
     track_list = prev_songlist.split('`')
     track_list.remove('')
-    for track in track_list:
-        if track == str(songid):
-            return jsonify({'flag' : 1})
-    #check for null...
-    if prev_str[0] is None:
-        songid = songid + "`"
-    else:
-        songid = prev_str[0] + songid + "`"
-
-    sql_query = "UPDATE userdetails SET songlist = %s WHERE Email = %s"
-    data = (songid , session['email'])
-    result = cursor.execute(sql_query , data)
     
+    #print(track_list)
+    track_data = []
+    counter = 1
+    for trackid in track_list:
+        url_request = 'http://api.musixmatch.com/ws/1.1/track.get?track_id=' + str(trackid) + '&apikey=3d136bab70652b62413441c2a2880831'
+        r = requests.get(url_request)
+        json_data = json.loads(r.text)
+        #pprint.pprint(json_data)
+        track = {
+            'index' : counter,
+            'track_name' : json_data['message']['body']['track']['track_name'],
+            'track_id' : json_data['message']['body']['track']['track_id'],
+            'track_rating' : json_data['message']['body']['track']['track_rating'],
+            'artist_name' : json_data['message']['body']['track']['artist_name']
+        }
+        counter = counter + 1
+        track_data.append(track)        
 
-    if result == 1:
-        return jsonify({'flag' : 1})
-    else:
-        return jsonify({'flag' : 0})
-    """
+    data = {
+        'flag' : 1,
+        'track_list' : track_data
+    }
+    return render(request , 'favourite.html' , context= data)
+
 

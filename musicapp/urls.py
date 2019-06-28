@@ -15,4 +15,5 @@ urlpatterns = [
     path('videoId/<str:songname>/' , views.videoId , name = 'videoId'),
     #   Favourites Add
     path('favourite_add/<str:songid>/' , views.favourite_add , name='favourite_add'),
+    path('favourite/' , views.favourite , name='favourite'),
 ]
