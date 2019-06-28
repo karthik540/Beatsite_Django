@@ -186,12 +186,19 @@ function login()
 
 function logout()
 {
+    console.log('comes here to logout')
     $.ajax({
         headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "GET",
-        url: "account/logout/",
+        url: "/account/logout/",
         success: function (response) {
             refreshPage();
+        },
+        error: function(response) {
+            console.log(response)
+        },
+        complete: function() {
+            console.log('logout complete')
         }
     });
 }
