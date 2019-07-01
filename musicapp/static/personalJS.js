@@ -42,7 +42,7 @@ function sendMessage()
     $.ajax({
         headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "POST",
-        url: "/botresponse/",
+        url: "/botResponse/",
         data: {'utext' : utext},
         success: function (response) {
             //console.log(botPart1 + response[1] + botPart3);
@@ -66,7 +66,7 @@ function sendMessage()
 function bot_Event_Handler(bot_response , intent_class) {
     
     if(intent_class == "Browse")
-        window.location="http://127.0.0.1:5000/browse/";
+        window.location="/browse/";
 
     //console.log(bot_response);
     if(intent_class == "pause song")

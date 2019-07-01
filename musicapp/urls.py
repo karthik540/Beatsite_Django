@@ -17,5 +17,5 @@ urlpatterns = [
     path('favourite_add/<str:songid>/' , views.favourite_add , name='favourite_add'),
     path('favourite/' , views.favourite , name='favourite'),
     #   Bot API Response
-    path('botResponse/' , views.favourite , name='botResponse'),
+    path('botResponse/' , views.botResponse , name='botResponse'),
 ]
