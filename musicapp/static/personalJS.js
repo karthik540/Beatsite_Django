@@ -94,9 +94,11 @@ function bot_Event_Handler(bot_response , intent_class) {
 
     if(intent_class == "play song")
     {
+        songname = bot_response.replace(' ' , '_')
         $.ajax({
             type: "POST",
-            url: "/videoId/" + bot_response,
+            headers: { "X-CSRFToken": getCookie("csrftoken") },
+            url: "/videoId/" + songname + '/',
             success: function (response) {
                 $("#video_container").css("padding", "3% 25%");
                 $("#video_container").html("<iframe id='player' width='100%' height='400px' src='https://www.youtube.com/embed/" + response + "?autoplay=1&enablejsapi=1&html5=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen=''></iframe>");
