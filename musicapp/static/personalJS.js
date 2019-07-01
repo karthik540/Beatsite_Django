@@ -40,8 +40,9 @@ function sendMessage()
     var flag = false;
     $(".chat-parent-container").append(userPart1 + utext + botPart3);
     $.ajax({
+        headers: { "X-CSRFToken": getCookie("csrftoken") },
         type: "POST",
-        url: "/botresponse",
+        url: "/botresponse/",
         data: {'utext' : utext},
         success: function (response) {
             //console.log(botPart1 + response[1] + botPart3);

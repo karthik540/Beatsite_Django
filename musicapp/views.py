@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login , logout
 from .models import CustomUser
 import requests , json , pprint
 from .image_url_fetcher import fetch_url
-
+from .botAPI import botResponseReciever
 # Create your views here.
 
 def index(request):
@@ -205,5 +205,12 @@ def favourite(request):
         'track_list' : track_data
     }
     return render(request , 'favourite.html' , context= data)
+
+def botResponse(request):
+    #print(request.form["utext"])
+    botMessage = botResponseReciever(request.POST['utext'])
+    #print(botMessage)
+    #speak.Speak("Hello")
+    return  JsonResponse({'response': botMessage[0] , 'class' : botMessage[1]})
 
 
